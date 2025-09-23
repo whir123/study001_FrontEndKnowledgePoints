@@ -44,8 +44,8 @@ class myPromise{
     // ⚠️ 2️⃣ 【 实现 .then 方法 】
     then(onFulfilled, onRejected) {
         //❗️如果 onFulfilled, onRejected 不是函数 提供默认值
-        onFulfilled = typeof(onFulfilled)==='function' ? onFulfilled : value=>value;
-        onRejected = typeof(onRejected)==='function' ? onRejected : reason=>{throw reason};
+        onFulfilled = typeof onFulfilled==='function' ? onFulfilled : value=>value;
+        onRejected = typeof onRejected==='function' ? onRejected : reason=>{throw reason};
         
         return new myPromise((resolve, reject)=>{ //【 返回一个新的 Promise 】
             this.fulfilledCallback.push((value)=>{ //【 ⚠️ 将一个闭包push回对应的回调函数数组 】
