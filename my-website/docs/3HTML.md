@@ -137,3 +137,26 @@ title: 3-HTML
 - **在 `Node.js` 里**（`ES2020` 开始）：
   - `self` 也存在，和 `globalThis` 指向同一个对象。
 ---
+## DOM的类层级关系
+- 在`W3C DOM 规范`里，所有 `DOM节点` 都是从 `Node` 这个抽象基类继承来的
+- 之后不同类型的节点会有更具体的类
+```
+Node (抽象基类)
+ ├── Document (文档节点)
+ │     └── HTMLDocument (HTML文档，浏览器里的 document)
+ │
+ ├── Element (元素节点)
+ │     ├── HTMLElement
+ │     │     ├── HTMLDivElement (<div>)
+ │     │     ├── HTMLParagraphElement (<p>)
+ │     │     └── …其他HTML元素
+ │     └── SVGElement (<svg> 等)
+ │
+ ├── Text (#text)
+ ├── Comment (<!--注释-->)
+ ├── DocumentFragment (#document-fragment)
+ └── DocumentType (<!DOCTYPE html>)
+```
+- 1️⃣ 所有节点（不管是元素、文本、注释、文档…）都继承自 Node，因此它们都有 nodeType、nodeName、parentNode 这些属性。 `👉 可以说它们“继承自 Node”。`
+
+- 2️⃣ 某个具体对象，比如 document，它的构造函数是 HTMLDocument（继承自 Document → Node）。 `👉 所以 document 是 HTMLDocument 的实例，同时也是 Document 的实例，更进一步也是 Node 的实例。`
