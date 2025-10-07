@@ -24,7 +24,7 @@ var s1 = {
     },
     t4: { // 对象调用箭头函数
         tt1: () => {
-           console.log(4,this);
+            console.log(4,this);
         }  
     },
     t5: function(){ // 函数调用箭头函数
