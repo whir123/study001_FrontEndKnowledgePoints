@@ -9,3 +9,11 @@
 #### 🗄️ 用 Docusaurus 打包静态网页
 
 #### 所有 `md` 文件已放入 `my-website/docs/` 目录下
+---
+#### 🛠️ 启动：
+
+```
+    cd my-website
+    npm install
+    npm run start
+```
