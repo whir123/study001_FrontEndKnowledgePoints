@@ -3,8 +3,8 @@
 // 2️⃣ 错误处理更加直观 配合 try…catch…
 // 3️⃣ 调用栈更清晰
 
-// ⚠️ async 声明异步函数 总是返回Promise 非Promise自动封装成resolved的Promise
-// ⚠️ await 只能在async函数内部使用 暂停async函数执行 等待Promise决议 返回Promise resolved的值
+// ⚠️【 async 】声明异步函数【总是返回Promise】非Promise自动封装成resolved的Promise
+// ⚠️【 await 】只能在async函数内部使用 暂停async函数执行 等待Promise决议 返回Promise resolved的值
 async function fetchData(url) {
     try {
         const response = await fetch(url); // await第一个Promise
@@ -49,3 +49,8 @@ async function concurrentFetches() {
     console.log(result1, result2);
 };
 concurrentFetches(); // ⚠️ 推荐加 try...catch 处理异常，避免程序中断
+
+// ⭐️ 如何捕获 await 抛出的那个 Error ｜ 三种常用策略：
+// 1️⃣ try catch
+// 2️⃣ 调用 async 函数后链式调用 .then()/.catch()
+// 3️⃣ （局部错误） 直接在 await 的 Promise 后面链式调用.catch()
