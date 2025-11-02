@@ -246,7 +246,7 @@ title: 2-Web浏览器相关
         }
     });
   ```
-- ⭐️ 现代 `fetch API` 示例 ｜ 代浏览器内置的`API` 用于替代传统的`XMLHttpRequest` 它基于`Promise` 提供了更简洁的异步操作方式
+- ⭐️ 现代 `fetch API` 示例 ｜ 现代浏览器内置的`API` 用于替代传统的`XMLHttpRequest` 它基于`Promise` 提供了更简洁的异步操作方式
   ```js
     fetch('https://api.example.com/data') // ⚠️ 默认情况下，fetch 的请求方式就是 GET
         .then(response => response.json())
