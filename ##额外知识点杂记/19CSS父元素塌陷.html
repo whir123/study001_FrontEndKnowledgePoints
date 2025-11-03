@@ -1,0 +1,52 @@
+<!-- 【父元素塌陷】 -->
+<!-- 主要发生在【块级元素】的【垂直方向】的 margin 上 -->
+<!-- 父元素只包含子元素（无 内边距、边框、内容）时 -->
+<!-- 子元素外边距会溢出到父元素上 导致父元素的高度没有包含子元素的外边距 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            width: 100px;
+            background: #555;
+            /* margin: 15px; 【没用】 */
+            /* overflow: hidden; */
+            /* border: yellowgreen 1px solid; */
+        }
+        /*
+        .parent::after {
+            content: "***";
+            background: blue;
+            height: 40px;
+            width: 40px;
+            display: block;
+            clear: both; /*⚠️指定一个元素是否必须移动 (清除浮动后) 到在它之前的浮动元素下面*/
+            /* ⚠️会在选中元素的内容末尾生成一个“虚拟的子元素”。
+            它在 DOM 结构中不可见，但在渲染树中作为 .parent 的【最后一个子节点】存在，和普通子元素一样参与布局 */
+            /* 伪元素：必须设置content属性 */
+            /* 伪元素：不能被JS直接获取 */
+            /* 伪元素：display默认是inline（设置成block才能触发BFC）*
+        }
+        */
+        .child {
+            height: 20px;
+            background: rebeccapurple;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            /* ⭐️ 此时 parent的高度不会因为child的margin而增加 看起来像父元素高度塌陷 */
+        }
+        /* 【解决办法】 */
+        /* 1️⃣ 父元素：添加：overflow: hidden/auto ｜ 触发BFC（块级格式化上下文）父元素会包含子元素的外边距 */
+        /* 2️⃣ 父元素：添加：内边距/边框 ｜ 父元素有内容 外边距不塌陷 */
+        /* 3️⃣ 伪元素清除浮动：｜ 也能触发BFC */
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+</html>
