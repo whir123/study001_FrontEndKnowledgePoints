@@ -54,8 +54,21 @@ function merge(arr) {
     return subMerge(left, right);
 };
 
+function quick(arr) {
+    if (arr.length<=1) return arr;
+    let mid = Math.floor(arr.length/2);
+    let p = arr.splice(mid,1)[0];
+    let left = [];
+    let right = [];
+    for (let i=0; i<arr.length; i++){
+        arr[i]>p ? left.push(arr[i]) : right.push(arr[i]);
+    };
+    return [...quick(left), p, ...quick(right)];
+};
+
 const testArr = [28, 23, 78, 1, 3, 4, 8, 92, 11, 36, 44];
 console.log(bubble([...testArr]));
 console.log(select([...testArr]));
 console.log(insert([...testArr]));
 console.log(merge([...testArr]));
+console.log(quick([...testArr]));
